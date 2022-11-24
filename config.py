@@ -30,12 +30,8 @@ if not DB_PASS:
 
 async def set_commands(dp):
     await dp.bot.set_my_commands([
-        types.BotCommand('songs', 'Песенник'),
-        types.BotCommand('howto', 'Как попасть на смену'),
-        types.BotCommand('team', 'Педсостав центра'),
-        types.BotCommand('memes', 'Получить мем'),
-        types.BotCommand('contacts', 'Контакты КРОМО "Магистр"'),
-        types.BotCommand('credits', 'Наша команда'),
         types.BotCommand('santa', 'Тайный Санта - регистрация'),
-        types.BotCommand('help', 'Краткая справка')
+        types.BotCommand('end', 'Тайный Санта - выход из игры'),
+        types.BotCommand('help', 'Краткая справка'),
+        types.BotCommand('stop', 'Остановить бота и удалить всю информацию о себе')
     ])
