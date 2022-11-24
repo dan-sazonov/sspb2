@@ -5,7 +5,6 @@
 """
 
 import config
-import features
 import db
 import santa
 
@@ -14,11 +13,6 @@ from messages import Messages
 from aiogram import types
 
 messages = Messages()
-mes_songs = Messages.Songs()
-mes_contacts = Messages.Contacts()
-mes_howto = Messages.HowTo()
-mes_team = Messages.Team()
-mes_credits = Messages.Credits()
 mes_santa = Messages.Santa()
 db_main = db.Main()
 
@@ -34,52 +28,6 @@ async def on_shutdown(_):
     await bot.close()
     await storage.close()
     await bot.send_message(chat_id=config.ADMIN_CHAT, text=messages.stop_polling)
-
-
-@dp.message_handler(commands=['songs'])
-async def songs_mes(message: types.Message):
-    # создаем клаву
-    songs_kb = types.InlineKeyboardMarkup()
-    for key in mes_songs.mes_kb:
-        songs_kb.add(types.InlineKeyboardButton(key[0], url=key[1]))
-
-    await message.answer(mes_songs.mes_text, reply_markup=songs_kb)
-    db_main.update_counter(int(message.from_user.id), 'songs')
-
-
-@dp.message_handler(commands=['contacts'])
-async def contacts_mes(message: types.Message):
-    # создаем клаву
-    contacts_kb = types.InlineKeyboardMarkup()
-    for key in mes_contacts.mes_kb:
-        contacts_kb.add(types.InlineKeyboardButton(key[0], url=key[1]))
-
-    await message.answer(mes_contacts.mes_text, reply_markup=contacts_kb)
-    db_main.update_counter(int(message.from_user.id), 'contacts')
-
-
-@dp.message_handler(commands=['howto'])
-async def howto_mes(message: types.Message):
-    await message.answer(mes_howto.mes_text)
-    db_main.update_counter(int(message.from_user.id), 'howto')
-
-
-@dp.message_handler(commands=['team'])
-async def team_mes(message: types.Message):
-    await message.answer(mes_team.mes_text)
-    db_main.update_counter(int(message.from_user.id), 'team')
-
-
-@dp.message_handler(commands=['memes'])
-async def memes_mes(message: types.Message):
-    await message.answer_photo(types.InputFile(features.get_memes()))
-    db_main.update_counter(int(message.from_user.id), 'memes')
-
-
-@dp.message_handler(commands=['credits'])
-async def memes_mes(message: types.Message):
-    await message.answer(mes_credits.mes_text, disable_web_page_preview=True)
-    db_main.update_counter(int(message.from_user.id), 'credits')
 
 
 @dp.message_handler(commands=['subscribe', 'start'])
