@@ -1,12 +1,16 @@
+import os
 
 import psycopg2
 from psycopg2 import Error
 
+usr = os.getenv('DB_TEST_USR')
+pas = os.getenv('DB_TEST_PASS')
+
 try:
     # Подключение к существующей базе данных
-    connection = psycopg2.connect(user="postgres",
+    connection = psycopg2.connect(user=usr,
                                   # пароль, который указали при установке PostgreSQL
-                                  password="postgres",
+                                  password=pas,
                                   host="127.0.0.1",
                                   port="5432",
                                   database="sspb2")
