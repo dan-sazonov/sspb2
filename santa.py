@@ -57,7 +57,13 @@ async def answer_q2(message: types.Message, state: FSMContext):
     answer = {'Да!': True, 'Нет': False}[answer]
     await state.update_data(on_meeting=answer)
 
-    await message.answer(mes_santa.ask_address, reply_markup=types.ReplyKeyboardRemove())
+    mes_kb = types.ReplyKeyboardMarkup(row_width=3, resize_keyboard=True)
+    btn_1 = types.KeyboardButton('БМ')
+    btn_2 = types.KeyboardButton('Гаста')
+    btn_3 = types.KeyboardButton('Ленса')
+    mes_kb.row(btn_1, btn_2, btn_3)
+
+    await message.answer(mes_santa.ask_address,reply_markup=mes_kb)
     await Poll.Address.set()
 
 
@@ -66,7 +72,7 @@ async def answer_q3(message: types.Message, state: FSMContext):
     answer = message.text
     await state.update_data(address=answer)
 
-    await message.answer(mes_santa.ask_name)
+    await message.answer(mes_santa.ask_name, reply_markup=types.ReplyKeyboardRemove())
     await Poll.Name.set()
 
 
