@@ -19,7 +19,7 @@ class Main:
                               password=config.DB_PASS,
                               host="127.0.0.1",
                               port="5432",
-                              database="sspb2")
+                              database="sspb2_")
 
         # db = psycopg2.connect(config.DATABASE_URL, sslmode='require')
         cursor = db.cursor()
@@ -101,7 +101,7 @@ class Santa:
                               password=config.DB_PASS,
                               host="127.0.0.1",
                               port="5432",
-                              database="sspb2")
+                              database="sspb2_")
         cursor = db.cursor()
         self.db, self.cursor = db, cursor
 
