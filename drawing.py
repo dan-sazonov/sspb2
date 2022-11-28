@@ -44,6 +44,8 @@ def get_pairs() -> list[tuple[int, int, bool]]:
 
     for players in (players_out_meeting, players_on_meeting):
         random.shuffle(players)
+        if not players:
+            continue
         pairs.append((players[-1], players[0], on_meeting_flag))
 
         for i in range(len(players) - 1):
