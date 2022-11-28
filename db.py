@@ -19,7 +19,7 @@ class Main:
                               password=config.DB_PASS,
                               host="127.0.0.1",
                               port="5432",
-                              database="sspb2_")
+                              database="sspb2")
         cursor = db.cursor()
         self.db, self.cursor = db, cursor
 
@@ -99,7 +99,7 @@ class Santa:
                               password=config.DB_PASS,
                               host="127.0.0.1",
                               port="5432",
-                              database="sspb2_")
+                              database="sspb2")
         cursor = db.cursor()
         self.db, self.cursor = db, cursor
 
@@ -176,7 +176,7 @@ class Drawing:
                               password=config.DB_PASS,
                               host="127.0.0.1",
                               port="5432",
-                              database="sspb2_")
+                              database="sspb2")
         cursor = db.cursor()
         self.db, self.cursor = db, cursor
 
