@@ -2,9 +2,11 @@
 Функции для работы с бд
 """
 
-import config
-import psycopg2
 import datetime
+
+import psycopg2
+
+import config
 
 
 class Main:
@@ -13,7 +15,11 @@ class Main:
     """
 
     def __init__(self):
-        db = psycopg2.connect(config.DATABASE_URL, sslmode='require')
+        db = psycopg2.connect(user=config.DB_USR,
+                              password=config.DB_PASS,
+                              host="127.0.0.1",
+                              port="5432",
+                              database="sspb2_")
         cursor = db.cursor()
         self.db, self.cursor = db, cursor
 
@@ -89,7 +95,11 @@ class Santa:
     # Да, я слышал про DRY. Интересно, почему код должен быть сухим?
 
     def __init__(self):
-        db = psycopg2.connect(config.DATABASE_URL, sslmode='require')
+        db = psycopg2.connect(user=config.DB_USR,
+                              password=config.DB_PASS,
+                              host="127.0.0.1",
+                              port="5432",
+                              database="sspb2_")
         cursor = db.cursor()
         self.db, self.cursor = db, cursor
 
@@ -156,14 +166,17 @@ class Santa:
         return tuple(map(lambda x: x.replace('\n', ' '), self.cursor.fetchall()[0]))
 
 
-
 class Drawing:
     """
     БД с инфой по жеребьевке
     """
 
     def __init__(self):
-        db = psycopg2.connect(config.DATABASE_URL, sslmode='require')
+        db = psycopg2.connect(user=config.DB_USR,
+                              password=config.DB_PASS,
+                              host="127.0.0.1",
+                              port="5432",
+                              database="sspb2_")
         cursor = db.cursor()
         self.db, self.cursor = db, cursor
 
