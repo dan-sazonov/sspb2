@@ -45,6 +45,7 @@ def get_pairs() -> list[tuple[int, int, bool]]:
     for players in (players_out_meeting, players_on_meeting):
         random.shuffle(players)
         if not players:
+            on_meeting_flag = True
             continue
         pairs.append((players[-1], players[0], on_meeting_flag))
 
@@ -116,6 +117,7 @@ async def sent_alerts(pairs: list[tuple[int, int, bool]]) -> None:
     :param pairs: [(санта, подопечный, on_meeting), ]
     :return: None
     """
+    print(pairs)
     for pair in pairs:
         await bot.send_message(chat_id=pair[0], text=get_mes_text(pair[1], pair[2]), reply_markup=santa.sent_btn)
         await bot.close()  # жуткий костыль, но без него все сыпется. А так только варнинг летит
