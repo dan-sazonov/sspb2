@@ -9,6 +9,8 @@ QA_CHAT = '@dan_sazonov'
 # Меняем в кавычках на дату, когда пройдет встреча с обменом подарками
 MEETING_DATE = '18 декабря'
 
+# В кавычки вставить токен бота, который скинул BotFather
+API_TOKEN = ''
 
 
 # НИЖЕ ЭТОЙ СТРОЧКИ НИЧЕГО НЕ ТРОГАТЬ!!!
@@ -29,16 +31,20 @@ ENABLE_ECHO = False  # все команды будут попадать в эх
 
 # prerequisites
 # в рот я этот DRY, скажи спасибо, что вообще работает
-API_TOKEN = os.getenv('BOT_TOKEN')
+
+DB_USR = 'postgres'
+DB_PASS = 'root'
+
+# API_TOKEN = os.getenv('BOT_TOKEN')
 if not API_TOKEN:
     # exit('Err: BOT_TOKEN variable is missing')
     print('Err: BOT_TOKEN variable is missing')
 
-DB_USR = os.getenv('DB_TEST_USR')
+# DB_USR = os.getenv('DB_TEST_USR')
 if not DB_USR:
     exit('Err: DB_USR variable is missing')
 
-DB_PASS = os.getenv('DB_TEST_PASS')
+# DB_PASS = os.getenv('DB_TEST_PASS')
 if not DB_PASS:
     exit('Err: DB_PASS variable is missing')
 

@@ -2,9 +2,10 @@ import os
 
 import psycopg2
 from psycopg2 import Error
+import config
 
-usr = os.getenv('DB_TEST_USR')
-pas = os.getenv('DB_TEST_PASS')
+usr=config.DB_USR,
+pas=config.DB_PASS,
 
 try:
     # Подключение к существующей базе данных
