@@ -23,9 +23,9 @@ class Main:
         cursor = db.cursor()
         self.db, self.cursor = db, cursor
 
-        cursor.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, username TEXT, join_date TIMESTAMP, "
+        cursor.execute("CREATE TABLE IF NOT EXISTS users(id BIGINT PRIMARY KEY, username TEXT, join_date TIMESTAMP, "
                        "messages INTEGER)")
-        cursor.execute("CREATE TABLE IF NOT EXISTS messages(id INTEGER PRIMARY KEY, songs_ INTEGER, contacts_ INTEGER, "
+        cursor.execute("CREATE TABLE IF NOT EXISTS messages(id BIGINT PRIMARY KEY, songs_ INTEGER, contacts_ INTEGER, "
                        "howto_ INTEGER, team_ INTEGER, memes_ INTEGER, credits_ INTEGER, help_ INTEGER, start_ INTEGER,"
                        "stop_ INTEGER, santa_ INTEGER, end_ INTEGER)")
         db.commit()
@@ -103,7 +103,7 @@ class Santa:
         cursor = db.cursor()
         self.db, self.cursor = db, cursor
 
-        cursor.execute("CREATE TABLE IF NOT EXISTS santa(id INTEGER PRIMARY KEY, wishes TEXT, address TEXT, name TEXT,"
+        cursor.execute("CREATE TABLE IF NOT EXISTS santa(id BIGINT PRIMARY KEY, wishes TEXT, address TEXT, name TEXT,"
                        "on_meeting BOOLEAN, gift_sent BOOLEAN, gift_received BOOLEAN)")
         db.commit()
 
