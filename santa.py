@@ -26,7 +26,7 @@ class Poll(StatesGroup):
     Name = State()
 
 
-@dp.message_handler(commands=['santa_'], state=None)
+@dp.message_handler(commands=['santa'], state=None)
 async def start_polling(message: types.Message):
     await message.answer(mes_santa.on_start, disable_web_page_preview=True)
     await message.answer(mes_santa.ask_wishes)
@@ -89,7 +89,7 @@ async def answer_q3(message: types.Message, state: FSMContext):
     await state.finish()
 
 
-@dp.message_handler(commands=['end_'])
+@dp.message_handler(commands=['end'])
 async def team_mes(message: types.Message):
     db.del_user(int(message.from_user.id))
     db_main.update_counter(message.from_user.id, 'end')
@@ -124,11 +124,11 @@ async def process_callback_button1(callback_query: types.CallbackQuery):
     await bot.send_message(db_drawing.get_master(uid), '🎁 Твой подопечный получил подарок!')
 
 
-@dp.message_handler(commands=['santa'])
+@dp.message_handler(commands=['santa_'])
 async def howto_mes(message: types.Message):
     await message.answer(mes_santa.placeholder)
 
 
-@dp.message_handler(commands=['end'])
+@dp.message_handler(commands=['end_'])
 async def howto_mes(message: types.Message):
     await message.answer(mes_santa.placeholder)
